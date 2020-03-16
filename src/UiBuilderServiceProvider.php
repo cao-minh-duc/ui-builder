@@ -14,10 +14,10 @@ class UiBuilderServiceProvider extends ServiceProvider
         /*
          * Optional methods to load your package assets
          */
-        // $this->loadTranslationsFrom(__DIR__.'/../resources/lang', 'ui-builder');
-        // $this->loadViewsFrom(__DIR__.'/../resources/views', 'ui-builder');
+        $this->loadTranslationsFrom(__DIR__.'/../resources/lang', 'ui-builder');
+        $this->loadViewsFrom(__DIR__.'/../resources/views', 'ui-builder');
         // $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
-        // $this->loadRoutesFrom(__DIR__.'/routes.php');
+        $this->loadRoutesFrom(__DIR__.'/routes.php');
 
         if ($this->app->runningInConsole()) {
             $this->publishes([
@@ -35,9 +35,9 @@ class UiBuilderServiceProvider extends ServiceProvider
             ], 'assets');*/
 
             // Publishing the translation files.
-            /*$this->publishes([
+            $this->publishes([
                 __DIR__.'/../resources/lang' => resource_path('lang/vendor/ui-builder'),
-            ], 'lang');*/
+            ], 'lang');
 
             // Registering package commands.
             // $this->commands([]);
