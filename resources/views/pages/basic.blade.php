@@ -1,8 +1,3 @@
-@php
-    $isHeigthFull = true;
-
-@endphp
-
 <div class="w-full lg:h-screen lg:ml-40">
     <h1 class="px-6 pt-4 text-2xl text-{{ config('ui-builder.system.color','indigo') }}-900">
         {{$title}}
@@ -19,3 +14,7 @@
         </div>
     </div>
 </div>
+
+@push('js')
+<script src="{{ asset('vendor/ui-builder/action.js')}}"></script>
+@endpush
