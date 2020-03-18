@@ -14,7 +14,7 @@
     <div class="w-full">
         <!-- Input -->
         <input 
-            id="{{$code}}" 
+            id="{{$id ?? $code}}" 
             name="{{$code}}" 
             type="number" 
             autocomplete="on"
@@ -24,11 +24,14 @@
             @isset($value)
                 value="{{$value}}"
             @endisset
-            class="p-2 border rounded w-full  
-                    @error($code)
-                        border-red-500
-                    @enderror
-                    ">
+            class="p-2 border rounded w-full border border-{{ config('ui-builder.system.color','indigo') }}-200 shadow focus:shadow-none hover:shadow-none
+            @error($code)
+                border-red-500
+            @enderror
+            @if($disabled ?? false || ($readonly ?? false))
+                bg-{{ config('ui-builder.system.color','indigo') }}-100 shadow-none cursor-not-allowed
+            @endif
+        ">
         <!-- End Input -->
 
         <!-- Feedback -->

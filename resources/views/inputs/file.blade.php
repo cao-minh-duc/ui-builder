@@ -15,7 +15,7 @@
 
         <!-- Input -->
         <input 
-            id="{{$code}}" 
+            id="{{$id ?? $code}}" 
             name="{{$code}}" 
             type="file" 
             @isset($required)

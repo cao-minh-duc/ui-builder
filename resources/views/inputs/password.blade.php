@@ -14,7 +14,7 @@
     
         <!-- Input -->
         <input 
-            id="{{$code}}" 
+            id="{{$id ?? $code}}" 
             name="{{$code}}" 
             type="password" 
             autocomplete="on" 
@@ -28,6 +28,9 @@
             @error($code)
                 border-red-500
             @enderror
+            @if($disabled ?? false || ($readonly ?? false))
+                bg-{{ config('ui-builder.system.color','indigo') }}-100 shadow-none cursor-not-allowed
+            @endif
         ">
         <!-- End Input -->
 

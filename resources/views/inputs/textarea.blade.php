@@ -13,14 +13,20 @@
     <!-- End Input Label -->
 
     <!-- Input -->
-    <textarea name="{{$code}}" id="{{$code}}" cols="30" rows="5"
+    <textarea name="{{$code}}" id="{{$id ?? $code}}" cols="30" rows="5"
         @if($required ?? false)
             required
+        @endif
+        @if($disabled ?? false)
+            disabled
         @endif
         class="p-2 border rounded w-full border border-{{ config('ui-builder.system.color','indigo') }}-200 shadow focus:shadow-none hover:shadow-none
         @error($code)
             border-red-500
         @enderror
+        @if($disabled ?? false || ($readonly ?? false))
+            bg-{{ config('ui-builder.system.color','indigo') }}-100 shadow-none cursor-not-allowed
+        @endif
         ">@isset($value){{$value}}@endisset</textarea>
     <!-- End Input -->
 
