@@ -3,9 +3,10 @@
 namespace CaoMinhDuc\UiBuilder;
 
 use Illuminate\Support\ServiceProvider;
-
+use NunoMaduro\LaravelMojito\ViewAssertion;
 class UiBuilderServiceProvider extends ServiceProvider
 {
+    
     /**
      * Bootstrap the application services.
      */
@@ -42,6 +43,8 @@ class UiBuilderServiceProvider extends ServiceProvider
             // Registering package commands.
             // $this->commands([]);
         }
+
+        $this->addCustomViewAssertion();
     }
 
     /**
@@ -55,6 +58,46 @@ class UiBuilderServiceProvider extends ServiceProvider
         // Register the main class to use with the facade
         $this->app->singleton('ui-builder', function () {
             return new UiBuilder;
+        });
+    }
+
+    protected function addCustomViewAssertion()
+    {
+        ViewAssertion::macro('hasSubmitButton', function () {
+            return $this->has('button[type="submit"]');
+        });
+
+        ViewAssertion::macro('hasDeleteButton', function (string $url) {
+            return $this->has('[dusk="delete-button"][onclick="sendDeleteRequest(\''.$url.'\',this)"]');
+        });
+
+        ViewAssertion::macro('hasEditButton', function (string $url) {
+            return $this->has('[dusk="edit-button"][href="'.$url.'"]');
+        });
+
+        ViewAssertion::macro('hasCancelButton', function (string $url) {
+            return $this->has('[dusk="cancel-button"][href="'.$url.'"]');
+        });
+        
+        ViewAssertion::macro('disabled',function(){
+            return $this->has('[disabled]');
+        });
+
+        ViewAssertion::macro('required',function(){
+            return $this->has('[required]');
+        });
+
+        ViewAssertion::macro('value',function($value){
+            return $this->has("[value='$value']");
+        });
+
+        ViewAssertion::macro('inForm', function (string $url,?string $method = NULL) {
+            if(NULL === $method)
+            {
+                return $this->has('form[action="'.$url.'"]');
+            }
+
+            return $this->has('form[action="'.$url.'"][method="'.$method.'"]');
         });
     }
 }
