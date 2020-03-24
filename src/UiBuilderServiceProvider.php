@@ -86,9 +86,16 @@ class UiBuilderServiceProvider extends ServiceProvider
         ViewAssertion::macro('required',function(){
             return $this->has('[required]');
         });
+        ViewAssertion::macro('checked',function(){
+            return $this->has('[checked]');
+        });
 
         ViewAssertion::macro('value',function($value){
             return $this->has("[value='$value']");
+        });
+        
+        ViewAssertion::macro('name',function($name){
+            return $this->has("[name='$name']");
         });
 
         ViewAssertion::macro('inForm', function (string $url,?string $method = NULL) {
