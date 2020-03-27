@@ -16,7 +16,9 @@
                                 $feature['route_prefix']
                             )
                         ) 
-                            text-white bg-{{config('ui-builder.system.color','indigo')}}-900  
+                            text-white bg-{{config('ui-builder.system.color','indigo')}}-900 
+                        @else
+                            text-white bg-{{config('ui-builder.system.color','indigo')}}-700 
                         @endif
                     "
                 >
