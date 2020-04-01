@@ -21,12 +21,12 @@
             @isset($value)
                 value="{{$value}}"
             @endisset 
-            @isset($disabled)
+            @if($disabled ?? false)
                 {{$disabled}}
-            @endisset
-            @isset($required)
+            @endif
+            @if($required ?? false)
                 {{$required}}
-            @endisset
+            @endif
             class="p-2 border rounded w-full  
             @error($code)
                 border-red-500

@@ -18,12 +18,12 @@
             name="{{$code}}" 
             type="number" 
             autocomplete="on"
-            @isset($required ?? false)
+            @if($required ?? false)
                 {{$required}}
-            @endisset
-            @isset($disabled ?? false)
+            @endif
+            @if($disabled ?? false)
                 {{$disabled}}
-            @endisset
+            @endif
             @if($readonly ?? false)
                 readonly
             @endif
