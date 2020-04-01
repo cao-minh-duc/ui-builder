@@ -18,9 +18,15 @@
             name="{{$code}}" 
             type="number" 
             autocomplete="on"
-            @isset($required)
+            @isset($required ?? false)
                 {{$required}}
             @endisset
+            @isset($disabled ?? false)
+                {{$disabled}}
+            @endisset
+            @if($readonly ?? false)
+                readonly
+            @endif
             @isset($value)
                 value="{{$value}}"
             @endisset

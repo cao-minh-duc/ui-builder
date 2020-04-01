@@ -21,6 +21,9 @@
             @isset($value)
                 value="{{$value}}"
             @endisset 
+            @isset($disabled)
+                {{$disabled}}
+            @endisset
             @isset($required)
                 {{$required}}
             @endisset
