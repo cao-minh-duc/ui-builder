@@ -19,10 +19,10 @@
             type="number" 
             autocomplete="on"
             @if($required ?? false)
-                {{$required}}
+                required
             @endif
             @if($disabled ?? false)
-                {{$disabled}}
+                disabled
             @endif
             @if($readonly ?? false)
                 readonly
