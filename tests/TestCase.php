@@ -18,10 +18,4 @@ class TestCase extends BaseTestCase
     {
         return [UiBuilderServiceProvider::class];
     }
-    
-    /** @test */
-    public function true_is_true()
-    {
-        $this->assertTrue(true);
-    }
 }
