@@ -8,7 +8,24 @@ class DefaultTestCase extends TestCase
 {
     protected $view;
 
+    protected $type;
+
     protected $input = '[name="element"]';
+
+    /**
+     * @test
+     */
+    public function type()
+    {
+        //init view
+        $view = $this->assertView(
+            $this->view, 
+            Attributes::make()->get()
+        );
+
+        //assertions
+        $view->in($this->input)->hasAttribute('type',$this->type);
+    }
 
     /**
      *
@@ -24,7 +41,7 @@ class DefaultTestCase extends TestCase
 
         //assertions
         $view->in('label')->contains('Element');
-        $view->in($this->input)->hasAttribute('type','text')->value('Value');
+        $view->in($this->input)->value('Value');
     }
 
     /**
@@ -74,6 +91,6 @@ class DefaultTestCase extends TestCase
         //assertions
         $view
             ->contains('Error Message')
-            ->has('input[type=text][name="element"]')->hasClass('border-red-500');
+            ->has($this->input)->hasClass('border-red-500');
     }
 }
