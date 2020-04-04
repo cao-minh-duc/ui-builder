@@ -1,43 +1,30 @@
-<!-- Input Block -->
-<div class="mx-2 my-4 
-        @if($isInline ?? true)
-            lg:flex
+@component('ui-builder::inputs.layouts.default',[
+    'code' => $code,
+    'name' => $name,
+    'isInline' => $isInline ?? TRUE,
+    'errors' => $errors
+])
+    <input 
+        id="{{$id ?? $code}}" 
+        name="{{$code}}" 
+        type="file" 
+        value="{{$value}}"
+        @if($required ?? true)
+        required
         @endif
-    ">
-
-    <!-- Input Label -->
-    <label for="{{$code}}" class="block w-full mb-3 font-bold lg:w-1/3">
-        {{$name}}
-    </label>
-    <!-- End Input Label -->
-
-    <div class="w-full">
-
-        <!-- Input -->
-        <input 
-            id="{{$id ?? $code}}" 
-            name="{{$code}}" 
-            type="file" 
-            @isset($required)
-                {{$required}}
-            @endisset
-            autocomplete="on"
-            class="p-2 border rounded w-full    
-                    @error($code)
-                        border-red-500
-                    @enderror
-                    ">
-        <!-- End Input -->
-
-        <!-- Feedback -->
+        @if($disabled ?? false)
+            disabled
+        @endif
+        @if($readonly ?? false)
+            readonly
+        @endif
+        class="p-2 border rounded w-full border border-{{ config('ui-builder.system.color','indigo') }}-200 shadow focus:shadow-none hover:shadow-none
         @error($code)
-        <p class="mt-1 text-sm text-red-500">
-            {{ $message }}
-        </p>
+            border-red-500
         @enderror
-        <!-- Feedback -->
-
-    </div>
-
-</div>
-<!-- End Input Block -->
+        @if($disabled ?? false || ($readonly ?? false))
+            bg-{{ config('ui-builder.system.color','indigo') }}-100 shadow-none cursor-not-allowed
+        @endif"
+        
+    >
+@endcomponent
