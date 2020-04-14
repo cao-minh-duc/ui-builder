@@ -8,7 +8,7 @@
     <!-- Input Label -->
     @include('ui-builder::inputs.labels.default')
     <!-- End Input Label -->
-    <div class="w-full">
+    <div class="flex flex-col justify-center w-full">
     
         <!-- Input -->
         {{$slot}}

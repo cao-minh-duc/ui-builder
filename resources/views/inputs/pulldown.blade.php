@@ -5,10 +5,11 @@
     'errors' => $errors
 ])
     <!-- Input -->
-    <input 
+
+    <select 
         id="{{$id ?? $code}}" 
         name="{{$code}}" 
-        type="number"
+        type="text"
         @isset($value)
             value="{{$value}}"
         @endisset 
@@ -21,7 +22,7 @@
         @if($readonly ?? false)
             readonly
         @endif
-        class="p-2 border rounded w-full border border-{{ config('ui-builder.system.color','indigo') }}-200 shadow focus:shadow-none hover:shadow-none
+        class="form-select p-2 border rounded w-full border border-{{ config('ui-builder.system.color','indigo') }}-200 shadow focus:shadow-none hover:shadow-none
         @error($code)
             border-red-500
         @enderror
@@ -29,5 +30,21 @@
             bg-{{ config('ui-builder.system.color','indigo') }}-100 shadow-none cursor-not-allowed
         @endif
     ">
+        @php
+            $valueField = $valueField ?? 'id';
+            $nameField = $nameField ?? 'name'
+        @endphp
+        @foreach($datalist as $item)
+            <option 
+                value="{{ $item->{$valueField} }}"
+                @if(
+                    ($value ?? NULL) == $item->{$valueField}
+                )
+                    selected
+                @endif
+                
+            >{{ $item->{$nameField} }}</option>
+        @endforeach
+    </select>
     <!-- End Input -->
 @endcomponent

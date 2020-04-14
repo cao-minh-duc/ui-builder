@@ -8,10 +8,15 @@
     <input 
         id="{{$id ?? $code}}" 
         name="{{$code}}" 
-        type="number"
-        @isset($value)
+        type="datetime-local"
+        @if(isset($value) && is_string($value))
             value="{{$value}}"
-        @endisset 
+        @endif 
+
+        @if(isset($value) && $value instanceof \Carbon\Carbon)
+            value="{{$value->format('Y-m-d\TH:i')}}"
+        @endif 
+
         @if($required ?? true)
             required
         @endif

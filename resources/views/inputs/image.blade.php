@@ -4,16 +4,17 @@
     'isInline' => $isInline ?? TRUE,
     'errors' => $errors
 ])
-    <!-- Input -->
     <input 
         id="{{$id ?? $code}}" 
         name="{{$code}}" 
-        type="number"
-        @isset($value)
-            value="{{$value}}"
-        @endisset 
+        @if($disabled ?? false || ($readonly ?? false))
+            type="image" 
+        @else
+            type="file"
+        @endif
+        src="{{$value}}"
         @if($required ?? true)
-            required
+        required
         @endif
         @if($disabled ?? false)
             disabled
@@ -21,13 +22,14 @@
         @if($readonly ?? false)
             readonly
         @endif
+        accept="image/*"
         class="p-2 border rounded w-full border border-{{ config('ui-builder.system.color','indigo') }}-200 shadow focus:shadow-none hover:shadow-none
         @error($code)
             border-red-500
         @enderror
         @if($disabled ?? false || ($readonly ?? false))
             bg-{{ config('ui-builder.system.color','indigo') }}-100 shadow-none cursor-not-allowed
-        @endif
-    ">
-    <!-- End Input -->
+        @endif"
+        
+    >
 @endcomponent
