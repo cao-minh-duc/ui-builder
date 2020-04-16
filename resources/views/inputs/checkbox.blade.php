@@ -20,12 +20,12 @@
             @if($checked ?? true)
                 checked
             @endif
-            class="mr-2 border rounded border border-{{ config('ui-builder.system.color','indigo') }}-200 shadow focus:shadow-none hover:shadow-none text-{{config('ui-builder.system.color')}}-700 form-checkbox
+            class="mr-2 border rounded border border-default-200 shadow focus:shadow-none hover:shadow-none text-default-700 form-checkbox
             @error($code)
                 border-red-500
             @enderror
             @if($disabled ?? false || ($readonly ?? false))
-                bg-{{ config('ui-builder.system.color','indigo') }}-100 shadow-none cursor-not-allowed
+                bg-default-100 shadow-none cursor-not-allowed
             @endif
         ">{{ $placeholder ?? NULL }}</label>
     @endcomponent

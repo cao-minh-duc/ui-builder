@@ -21,12 +21,12 @@
         @if($readonly ?? false)
             readonly
         @endif
-        class="p-2 border rounded w-full border border-{{ config('ui-builder.system.color','indigo') }}-200 shadow focus:shadow-none hover:shadow-none
+        class="w-full p-2 border rounded border-default-200 shadow focus:shadow-none hover:shadow-none
         @error($code)
             border-red-500
         @enderror
         @if($disabled ?? false || ($readonly ?? false))
-            bg-{{ config('ui-builder.system.color','indigo') }}-100 shadow-none cursor-not-allowed
+            bg-default-100 shadow-none cursor-not-allowed
         @endif
     ">
     <!-- End Input -->

@@ -1,5 +1,5 @@
 <header
-    class="flex items-center justify-between text-gray-400 bg-{{config('ui-builder.system.color','indigo')}}-700 text-tiny lg:text-sm lg:w-40 lg:flex-col lg:h-screen lg:fixed">
+    class="flex items-center justify-between text-gray-400 bg-default-700 text-tiny lg:text-sm lg:w-40 lg:flex-col lg:h-screen lg:fixed">
 
     @include('ui-builder::sidebar.logo')
 
@@ -16,9 +16,9 @@
                                 $feature['route_prefix']
                             )
                         ) 
-                            text-white bg-{{config('ui-builder.system.color','indigo')}}-900 
+                            text-white bg-default-900 
                         @else
-                            text-white bg-{{config('ui-builder.system.color','indigo')}}-700 
+                            text-white bg-default-700 
                         @endif
                     "
                 >

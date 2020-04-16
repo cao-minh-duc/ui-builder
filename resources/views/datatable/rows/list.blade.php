@@ -1,4 +1,4 @@
-<tr class="hidden lg:hidden border border-{{ config('ui-builder.system.color') }}-200">
+<tr class="hidden lg:hidden border border-default-200">
     <td class="px-3 py-2" colspan="{{$colspan ?? 3}}">
         <ul>
             @isset($cells)

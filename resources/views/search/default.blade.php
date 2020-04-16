@@ -6,7 +6,7 @@
                     name="search" 
                     type="text"
                     required
-                    class="p-2 rounded border border-{{ config('ui-builder.system.color') }}-200 shadow focus:shadow-none hover:shadow-none">
+                    class="p-2 border rounded shadow border-default-200 focus:shadow-none hover:shadow-none">
                 <!-- End Input -->
                 
                 @include('ui-builder::action.buttons.submit',[

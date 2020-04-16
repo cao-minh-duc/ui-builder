@@ -1,1 +1,1 @@
-<a href="{{ $href ?? '' }}" class="font-bold text-{{config('ui-builder.system.color')}}-700 {{$linkClass ?? ''}}"> {{$slot}}</a>
+<a href="{{ $href ?? '' }}" class="font-bold text-default-700 {{$linkClass ?? ''}}"> {{$slot}}</a>
